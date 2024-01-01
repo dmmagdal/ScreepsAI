@@ -1,0 +1,9 @@
+[submodule "screeps-steamless-client"]
+	path = screeps-steamless-client
+	url = https://github.com/laverdet/screeps-steamless-client
+[submodule "screepsmod-auth"]
+	path = screepsmod-auth
+	url = https://github.com/ScreepsMods/screepsmod-auth
+[submodule "xxscreeps"]
+	path = xxscreeps
+	url = https://github.com/laverdet/xxscreeps/
