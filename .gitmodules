@@ -7,3 +7,6 @@
 [submodule "xxscreeps"]
 	path = xxscreeps
 	url = https://github.com/laverdet/xxscreeps/
+[submodule "screeps"]
+	path = screeps
+	url = https://github.com/screeps/screeps.git
