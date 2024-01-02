@@ -10,3 +10,9 @@
 [submodule "screeps"]
 	path = screeps
 	url = https://github.com/screeps/screeps.git
+[submodule "tutorial-scripts"]
+	path = tutorial-scripts
+	url = https://github.com/screeps/tutorial-scripts
+[submodule "docs"]
+	path = docs
+	url = https://github.com/screeps/docs
