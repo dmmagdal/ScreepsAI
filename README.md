@@ -24,7 +24,17 @@ Description: My attempts/research into the Screeps: World game and apply differe
 
 ### Notes:
 
- - This game does support a local "offline".
+ - This game does support a local "offline" mode (you have the game from Steam - duh).
+
+
+### Bot Notes:
+
+ - Bot1
+     - 
+ - Bot2
+     - Built off of the Screeps Tutorial Walkthrough for Beginners YouTube playlist. That playlist is based on the [Screeps tutorial](https://screeps.com/a/#!/sim/tutorial)
+ - Bot3
+ - Bot4
 
 
 ### References:
@@ -36,7 +46,91 @@ Description: My attempts/research into the Screeps: World game and apply differe
      - [Training](https://screeps.com/a/#!/sim)
      - [Forums](https://screeps.com/forum/)
      - [Apple M1 Support Forum Thread](https://screeps.com/forum/topic/3131/crashing-on-m1-macs/19)
+     - [3rd Party Support](https://docs.screeps.com/third-party.html)
  - 3rd Party Packages:
      - [screeps-steamless-client](https://github.com/laverdet/screeps-steamless-client)
      - [screepsmod-auth](https://github.com/ScreepsMods/screepsmod-auth)
      - [xxscreeps](https://github.com/laverdet/xxscreeps/)
+ - YouTube
+     - Let's Play Screeps with Typescript & VSCode
+         - [Let's Play Screeps with TypeScript and Visual Studio Code #1](https://www.youtube.com/watch?v=OhBLmkiTZe4&list=PLCRhjmqETCePxmtB2mKScrJB_SCAI6jqw&index=1&ab_channel=KarateSnoopy)
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+     - Screeps Tutorial Walkthrough for Beginners
+         - [Screeps Tutorial Walkthrough for Beginners - 0. Introduction](https://www.youtube.com/watch?v=dWP3VRKmV4Q&list=PL1m2M8LQlzfKndesWcReHzj9-zq1qP2CG&index=1&ab_channel=LearnCodeByGaming)
+         - [Screeps Tutorial Walkthrough for Beginners - 1. Game UI & Basic Scripting](https://www.youtube.com/watch?v=OacP_hyKs0c&list=PL1m2M8LQlzfKndesWcReHzj9-zq1qP2CG&index=2&pp=iAQB&ab_channel=LearnCodeByGaming)
+         - [Screeps Tutorial Walkthrough for Beginners - 2. Upgrading Controller](https://www.youtube.com/watch?v=HCSiOBFDGnQ&list=PL1m2M8LQlzfKndesWcReHzj9-zq1qP2CG&index=3&ab_channel=LearnCodeByGaming)
+         - [Screeps Tutorial Walkthrough for Beginners - 3. Building Structures](https://www.youtube.com/watch?v=66tS8FAeAhI&list=PL1m2M8LQlzfKndesWcReHzj9-zq1qP2CG&index=4&ab_channel=LearnCodeByGaming)
+         - [Screeps Tutorial Walkthrough for Beginners - 4. Auto-Spawning Creeps](https://www.youtube.com/watch?v=MbVdyt6D0RA&list=PL1m2M8LQlzfKndesWcReHzj9-zq1qP2CG&index=5&ab_channel=LearnCodeByGaming)
+         - [Screeps Tutorial Walkthrough for Beginners - 5. Defending Your Room](https://www.youtube.com/watch?v=ZFLAWjHOPiQ&list=PL1m2M8LQlzfKndesWcReHzj9-zq1qP2CG&index=6&ab_channel=LearnCodeByGaming)
+     - Screeps Beginner Tutorial
+         - [Screeps Starter Codebase Template](https://www.youtube.com/watch?v=N7KMOG8C5vA&list=PLw9di5JwI6p-HUP0yPUxciaEjrsFb2kR2&index=1&ab_channel=AtannerGaming)
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+     - Screeps Nooby Guide - by th_pion
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
+         - []()
