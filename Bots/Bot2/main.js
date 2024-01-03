@@ -1,5 +1,6 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
+const roleBuilder = require('role.builder');
 
 module.exports.loop = function () {
     // 1)
@@ -102,5 +103,109 @@ module.exports.loop = function () {
     // extensions can be placed at any spot in the room & a spawn can 
     // use them regardless of the distance. To build the extensions,
     // there needs to be a creep that can build structures.
-    // Command:  Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], 'Builder1', { memory: { role: 'builder} } );
+    // Command:  Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], 'Builder1', { memory: { role: 'builder'} } );
+    // In total, we should have 550 unites of energy in our spawn + 
+    // extensions. That is enough to build a creep with the body
+    // [WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE]. This creep will
+    // work 4x faster than a regular worker creep. It's body is heavier
+    // so we add another MOVE to it. However, two parts are still not
+    // enough to move it at a speed of a small fast creep, which would
+    // require 4x MOVEs or building a road.
+    // Command: Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE], 'HarvesterBig', { memory: { role: 'harvester'} } );
+    // for (var name in Game.rooms) {
+    //     // To know the total amound of energy in the room, use the
+    //     // property Room.energyAvailable.
+    //     console.log(`Room "` + name + '" has ' + Game.rooms[name].energyAvailable + ' energy');
+    // }
+    // for (var name in Game.creeps) {
+    //     var creep = Game.creeps[name];
+    //     if (creep.memory.role == 'harvester') {
+    //         roleHarvester.run(creep);
+    //     }
+    //     if (creep.memory.role == 'upgrader') {
+    //         roleUpgrader.run(creep);
+    //     }
+    //     if (creep.memory.role == 'builder') {
+    //         roleBuilder.run(creep);
+    //     }
+    // }
+
+    // 7)
+    // This section will focus on how to spawn creeps automatically.
+    // Before, the Console was required to spawn in our creeps but we
+    // want the colony to be self sufficient in replacing creeps that
+    // die off. Since there are no events in the game to report death
+    // of a particular creep, the easiest way is to just count the
+    // number of required creeps. If it becomes less than a defined
+    // value, start spawning. There are several ways to count the 
+    // number of creeps of the required type. One of them is filtering
+    // Games.creeps with the help of _.filter() & using the role in
+    // their memory.
+    // Let's say we want to have at least 2 harvesters at any time. The
+    // easiest way to achieve this is to run StructureSpawn.spawnCreep
+    // each time we discover it's less than this number. You may not
+    // define its name (it will be given automatically in this case),
+    // but dont forget to define the needed role. We may also add some
+    // new RoomVisual call in order to visualize what creep is being
+    // spawned.
+    // To emulate a situation when one of the harvesters dies, issue
+    // the following suicide() command in the Console.
+    // Command: Game.creeps['Harvester1'].suicide();
+    // An important point here is that the memory of dead creeps is not
+    // erased but kept for later reuse. If you create creeps with
+    // random names each time, it may lead to memory overflow, so you
+    // should clear it in the beginning of each tick (prior to the 
+    // creep creation code).
+    // Apart from creating new creeps after the death of old ones,
+    // there is another way to maintain the needed number of creeps:
+    // the method StructureSpawn.renewCreep().
+    for (var name in Memory.creeps) {
+        if (!Game.creeps[name]) {
+            delete Memory.creeps[name];
+            console.log('Clearing non-existing creep memory:', name);
+        }
+    }
+    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    console.log("Harvesters: " + harvesters.length);
+    if (harvesters.length < 2) {
+        var newName = 'Harvester' + Game.time;
+        console.log('Spawning new harvester: ' + newName);
+        Game.spawns['Spawn1'].spawnCreep(
+            [WORK, CARRY, MOVE], 
+            newName,
+            { memory: { role: 'harvester' } },
+        );
+    }
+    if (Game.spawns['Spawn1'].spawning) {
+        var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
+        Game.spawns['Spawn1'].room.visual.text(
+            'spawning ' + spawningCreep.memory.role,
+            Game.spawns['Spawn1'].pos.x + 1,
+            Game.spawns['Spawn1'].pos.y,
+            {align: 'left', opacity: 0.8}
+        );
+    }
+    for (var name in Game.rooms) {
+        console.log(`Room "` + name + '" has ' + Game.rooms[name].energyAvailable + ' energy');
+    }
+    for (var name in Game.creeps) {
+        var creep = Game.creeps[name];
+        if (creep.memory.role == 'harvester') {
+            roleHarvester.run(creep);
+        }
+        if (creep.memory.role == 'upgrader') {
+            roleUpgrader.run(creep);
+        }
+        if (creep.memory.role == 'builder') {
+            roleBuilder.run(creep);
+        }
+    }
+
+    // 8)
+    // The world of screeps is not the safest place. Other players may 
+    // have claims to your territory. Besides, your room may be raided 
+    // by neutral NPC creeps occasionally. You should think about your 
+    // colony in order to develop it successfully. It is a good idea to
+    // have walls to restrain hostile creeps temorarily, but they will 
+    // fall sooner or later so we need to deal with the problem.
 }

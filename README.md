@@ -24,7 +24,7 @@ Description: My attempts/research into the Screeps: World game and apply differe
 
 ### Notes:
 
- - This game does support a local "offline" mode (you have the game from Steam - duh).
+ - This game does support a local "offline" mode (you have the game from Steam - duh). This also includes a local replay (again, just watch it via Steam or the localhost address if you're on M1 MacOS), though it's more of a live play since the game is constantly active.
 
 
 ### Bot Notes:
@@ -32,7 +32,7 @@ Description: My attempts/research into the Screeps: World game and apply differe
  - Bot1
      - 
  - Bot2
-     - Built off of the Screeps Tutorial Walkthrough for Beginners YouTube playlist. That playlist is based on the [Screeps tutorial](https://screeps.com/a/#!/sim/tutorial)
+     - Built off of the "Screeps Tutorial Walkthrough for Beginners" YouTube playlist. That playlist is based on the [Screeps tutorial](https://screeps.com/a/#!/sim/tutorial).
  - Bot3
  - Bot4
 

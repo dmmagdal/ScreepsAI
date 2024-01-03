@@ -1,5 +1,5 @@
 var roleUpgrader = {
-    // 1) (maps to 5 & 6) in main.js.
+    // 1) (maps to 5, 6, & 7) in main.js.
     // Upgrade the Room Controller if the energy is available,
     // otherwise the creep should harvest some more energy.
     /** @param {Creep} creep **/
