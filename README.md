@@ -33,6 +33,7 @@ Description: My attempts/research into the Screeps: World game and apply differe
      - 
  - Bot2
      - Built off of the "Screeps Tutorial Walkthrough for Beginners" YouTube playlist. That playlist is based on the [Screeps tutorial](https://screeps.com/a/#!/sim/tutorial).
+     - Very basic bot that is meant to teach the fundamentals.
  - Bot3
  - Bot4
 

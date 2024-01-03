@@ -159,6 +159,93 @@ module.exports.loop = function () {
     // Apart from creating new creeps after the death of old ones,
     // there is another way to maintain the needed number of creeps:
     // the method StructureSpawn.renewCreep().
+    // for (var name in Memory.creeps) {
+    //     if (!Game.creeps[name]) {
+    //         delete Memory.creeps[name];
+    //         console.log('Clearing non-existing creep memory:', name);
+    //     }
+    // }
+    // var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    // console.log("Harvesters: " + harvesters.length);
+    // if (harvesters.length < 2) {
+    //     var newName = 'Harvester' + Game.time;
+    //     console.log('Spawning new harvester: ' + newName);
+    //     Game.spawns['Spawn1'].spawnCreep(
+    //         [WORK, CARRY, MOVE], 
+    //         newName,
+    //         { memory: { role: 'harvester' } },
+    //     );
+    // }
+    // if (Game.spawns['Spawn1'].spawning) {
+    //     var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
+    //     Game.spawns['Spawn1'].room.visual.text(
+    //         'spawning ' + spawningCreep.memory.role,
+    //         Game.spawns['Spawn1'].pos.x + 1,
+    //         Game.spawns['Spawn1'].pos.y,
+    //         {align: 'left', opacity: 0.8}
+    //     );
+    // }
+    // for (var name in Game.rooms) {
+    //     console.log(`Room "` + name + '" has ' + Game.rooms[name].energyAvailable + ' energy');
+    // }
+    // for (var name in Game.creeps) {
+    //     var creep = Game.creeps[name];
+    //     if (creep.memory.role == 'harvester') {
+    //         roleHarvester.run(creep);
+    //     }
+    //     if (creep.memory.role == 'upgrader') {
+    //         roleUpgrader.run(creep);
+    //     }
+    //     if (creep.memory.role == 'builder') {
+    //         roleBuilder.run(creep);
+    //     }
+    // }
+
+    // 8)
+    // The world of screeps is not the safest place. Other players may 
+    // have claims to your territory. Besides, your room may be raided 
+    // by neutral NPC creeps occasionally. You should think about your 
+    // colony in order to develop it successfully. It is a good idea to
+    // have walls to restrain hostile creeps temorarily, but they will 
+    // fall sooner or later so we need to deal with the problem. The
+    // surest way to fend off an attack is using the room Safe Mode. In
+    // safe mode, no other creep will be able to use any harmful 
+    // methods in the room (but you'll still be able to defend against 
+    // strangers). The safe mode is activated via the room controller 
+    // which should have activations available to use.
+    // Command: Game.spawns['Spawn1'].room.controller.activateSafeMode();
+    // Towers are the easiest way to actively defend a room. They use 
+    // energy and can be targeted at any creep in a room to attack or
+    // heal it. The effect depends on the distance between the tower
+    // and the target. You may wish to place your tower inside the
+    // walls & place the construction site there with the huelp of the
+    // button 'Construct' on the upper left pannel (GUI).
+    // Command: Game.spawns['Spawn1'].room.createConstructionSite(23, 22, STRUCTURE_TOWER);
+    // Like a creep, a tower has several similar methods: attack, heal,
+    // and repair. Each action spends 10 energy units. We need to use
+    // attack on the closest enemy creep upon its discovery. Remember
+    // that distance is vital: the effect can be several times stronger
+    // with the same energy cost. To get the tower object directly, you
+    // can use its ID from the right panel (GUI) and the method
+    // Game.getObjectById();
+    // Damaged structures can be repaired by both creeps & towers.
+    // Let's use a tower for that. We'll need the repair(). You will
+    // also need Room.find and a filter to locate the damaged walls.
+    // Note that since walls done belong to any player, finding them 
+    // requires the constant FIND_STRUCTURES rather than FIND_MY_STRUCTURES.
+    var tower = Game.getObjectById('e18b65a320c863afb6973851'); // replace with real ID when you run this code.
+    if (tower) {
+        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+            filter: (structure) => structure.hits < structure.hitsMax
+        });
+        if (closestDamagedStructure) {
+            tower.repair(closestDamagedStructure);
+        }
+        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+        if (closestHostile) {
+            tower.attack(closestHostile);
+        }
+    }
     for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
             delete Memory.creeps[name];
@@ -200,12 +287,4 @@ module.exports.loop = function () {
             roleBuilder.run(creep);
         }
     }
-
-    // 8)
-    // The world of screeps is not the safest place. Other players may 
-    // have claims to your territory. Besides, your room may be raided 
-    // by neutral NPC creeps occasionally. You should think about your 
-    // colony in order to develop it successfully. It is a good idea to
-    // have walls to restrain hostile creeps temorarily, but they will 
-    // fall sooner or later so we need to deal with the problem.
 }

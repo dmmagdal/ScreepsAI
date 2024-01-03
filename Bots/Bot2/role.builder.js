@@ -1,5 +1,5 @@
 var roleBuilder = {
-    // 1) (maps to 6 & 7) in main.js.
+    // 1) (maps to 6, 7, & 8) in main.js.
     // Builds the extensions and harvests energy for the build.
     /** @param {Creep} creep **/
     run: function(creep) {

@@ -1,5 +1,5 @@
 var roleHarvester = {
-    // 1) (maps to 4, & 5) in main.js.
+    // 1) (maps to 4 & 5) in main.js.
     // Split the harvesting code into this file. It helps with
     // organization & abstraction.
     /** @param {Creep} creep **/
@@ -26,6 +26,31 @@ var roleHarvester = {
         // the condition structures.structureType == STRUCTURE_EXTENSION
         // (or alternatively, structure instanceof StructureExtension)
         // and also check them for energy load as before.
+        // if (creep.carry.energy < creep.carryCapacity) {
+        //     var sources = creep.room.find(FIND_SOURCES);
+        //     if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+        //         creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+        //     }
+        // }
+        // else {
+        //     var targets = creep.room.find(FIND_STRUCTURES, {
+        //         filter: (structure) => {
+        //             return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
+        //                 structure.energy < structure.energyCapacity;
+        //         }
+        //     });
+        //     if (targets.length > 0) {
+        //         if (creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+        //             creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+        //         }
+        //     }
+        // } 
+
+        // 3) (maps to 8) in main.js
+        // A tower uses energy, so we need to set a harvester to bring
+        // energy to the tower along with other structures. To do this,
+        // add the STRUCTURE_TOWER to the filter of structures the 
+        // harvester is aimed at.
         if (creep.carry.energy < creep.carryCapacity) {
             var sources = creep.room.find(FIND_SOURCES);
             if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
@@ -35,8 +60,10 @@ var roleHarvester = {
         else {
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
-                        structure.energy < structure.energyCapacity
+                    return (structure.structureType == STRUCTURE_EXTENSION || 
+                        structure.structureType == STRUCTURE_SPAWN || 
+                        structure.structureType == STRUCTURE_TOWER
+                        ) && structure.energy < structure.energyCapacity;
                 }
             });
             if (targets.length > 0) {
