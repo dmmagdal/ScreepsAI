@@ -113,3 +113,5 @@ Description: My attempts/research into the Screeps: World game and apply differe
          - [Screeps Nooby Guide #12: Container Mining - by th_pion](https://www.youtube.com/watch?v=XyRQDmZWPDU&list=PL0EZQ169YGlor5rzeJEYYPE3tGYT2zGT2&index=13&ab_channel=th_pion)
          - [Screeps Nooby Guide #13: Storage - by th_pion](https://www.youtube.com/watch?v=lYzJC7dAGec&list=PL0EZQ169YGlor5rzeJEYYPE3tGYT2zGT2&index=14&ab_channel=th_pion)
          - [Screeps Nooby Guide #14: Refactoring - by th_pion](https://www.youtube.com/watch?v=6b-ZZ6bROWI&list=PL0EZQ169YGlor5rzeJEYYPE3tGYT2zGT2&index=15&ab_channel=th_pion)
+ - Reddit
+     - [API for Machine Learning post](https://www.reddit.com/r/screeps/comments/5uab0c/api_for_machine_learning/)
